@@ -5,11 +5,15 @@ import PropTypes from "prop-types";
 const Alert = props => {
 	//add the condition inside this function
 
-	return (
-		<div className="alert alert-danger" role="alert">
-			This is a primary alert-check it out!
-		</div>
-	);
+	if (!props.show) {
+		return null;
+	} else {
+		return (
+			<div className="alert alert-danger" role="alert">
+				{props.text}
+			</div>
+		);
+	}
 };
 Alert.propTypes = {
 	color: PropTypes.string,
@@ -20,7 +24,7 @@ Alert.propTypes = {
 // but it helps you understand what properties are being passed to the component
 ReactDOM.render(
 	<div>
-		<Alert show={true} text="This is a primary alert-check it out!" />
+		<Alert show={true} text="This is a primary alert-check it out - True!" />
 		<Alert show={false} text="This is a primary alert-check it out!" />
 	</div>,
 	document.querySelector("#myDiv")
